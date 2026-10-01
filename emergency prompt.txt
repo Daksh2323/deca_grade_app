@@ -1,0 +1,386 @@
+Hi Claude! I'm continuing my StudyVerse app development. Please read 
+this ENTIRE context carefully before responding. I was working with 
+another Claude instance and need you to pick up EXACTLY where we left off.
+
+═══════════════════════════════════════════════════════════
+🎯 PROJECT OVERVIEW: STUDYVERSE
+═══════════════════════════════════════════════════════════
+
+APP NAME: StudyVerse
+TAGLINE: "Learn • Grow • Excel"
+PURPOSE: Educational app for Indian students Class 10-12 
+         (CBSE first, then ICSE, State Boards)
+CREATOR: I'm a "vibe coder" — all coding done by AI, I paste prompts to VS Code AI
+BUDGET: $0 (all free tier services)
+TARGET USERS: Indian High School students + parents
+
+═══════════════════════════════════════════════════════════
+🛠️ COMPLETE TECH STACK
+═══════════════════════════════════════════════════════════
+
+FRAMEWORK: Flutter (Dart language)
+BACKEND: Firebase (Auth + Firestore)
+AI: Google Gemini API (model: gemini-2.0-flash-exp) — FREE
+IDE: VS Code with AI assistance
+DEVICE: Testing on Android phone with Expo Go
+DESIGN TOOL: Google AI Studio (created UI mockups)
+
+FLUTTER PACKAGES USED:
+- firebase_core, firebase_auth, cloud_firestore
+- google_sign_in
+- google_generative_ai (^0.4.7)
+- google_fonts (Plus Jakarta Sans)
+- flutter_svg (for mascots)
+- flutter_animate (animations)
+- flutter_native_splash
+- provider (state management)
+
+═══════════════════════════════════════════════════════════
+🎨 DESIGN SYSTEM (LIGHT THEME - DUOLINGO-STYLE)
+═══════════════════════════════════════════════════════════
+
+COLORS:
+- Background: #FFF9F0 (Soft Cream)
+- Card BG: #FFFFFF (Pure White)
+- Primary: #8B5CF6 (Vibrant Purple)
+- Secondary: #6366F1 (Indigo AI Blue)
+- Tertiary: #7C3AED (Deep Violet)
+
+SUBJECT COLORS:
+- Math: #8B5CF6 (Purple) — Mascot: Calculo (Robot)
+- Science: #10B981 (Green) — Mascot: Dr. Spark (Scientist)
+- English: #F59E0B (Amber) — Mascot: Owly (Owl)
+- Social Science: #EC4899 (Pink) — Mascot: Indy (Explorer)
+- Hindi: #06B6D4 (Cyan) — Mascot: Kavi Sahitya (Storyteller)
+- AI Tutor: #6366F1 (Indigo) — Mascot: Aria (Glowing Orb)
+
+TEXT COLORS:
+- Primary: #2D2342, Secondary: #4B5563, Muted: #94A3B8
+
+FONTS: Plus Jakarta Sans (Google Fonts)
+- Display: 24-28px, weight 900
+- Headings: 15-20px, weight 700-800
+- Body: 11-14px, weight 500-600
+- Button: 12px, weight 800
+
+STYLE: Duolingo 3D buttons with hard bottom border (4px darker shade)
+Border Radius: 8/12/16/24px (small to XL)
+
+═══════════════════════════════════════════════════════════
+✅ WHAT'S ALREADY BUILT (COMPLETED)
+═══════════════════════════════════════════════════════════
+
+1. ✅ FIREBASE SETUP
+   - Auth (Email/Password + Google Sign-In)
+   - Firestore Database with security rules
+   - firebase_options.dart configured
+   - Persistent login working
+
+2. ✅ SPLASH SCREEN (lib/screens/splash_screen.dart)
+   - Animated logo with pulse
+   - Auto-navigates based on auth state
+   - Long-press "Made with 💙 in India" for dev tools
+
+3. ✅ ONBOARDING (3 slides)
+   - Beautiful animated slides
+   - Skip button
+   - Get Started flow
+
+4. ✅ AUTH SCREENS (Login + Signup)
+   - Email/Password with validation
+   - Google Sign-In working
+   - Class selector (10/11/12) in signup
+   - Beautiful UI with mascot avatars
+
+5. ✅ HOME SCREEN (lib/screens/main/home_screen.dart)
+   - "Hi [Name] 👋" greeting
+   - Class selector pill
+   - Streak + XP badges
+   - Purple gradient Hero Card with Calculo mascot
+   - "RESUME CHAPTER" 3D button
+   - 5 subject cards with mascots
+
+6. ✅ AI TUTOR "ARIA" (lib/screens/main/ai_tutor_screen.dart)
+   - Chat UI with Aria orb mascot
+   - Real Gemini AI integration (WORKING!)
+   - Subject filter chips
+   - Quick prompt suggestions
+   - Copy button on responses
+   - Reset chat option
+   - Model: gemini-2.0-flash-exp
+
+7. ✅ LEARN SCREEN (lib/screens/main/learn_screen.dart)
+   - Subject list with progress
+   - Board + Class filters
+   - Subject Detail screen
+   - Chapter Detail screen with tabs (Notes, Formulas, Cards)
+
+8. ✅ 6 SVG MASCOTS (assets/mascots/)
+   - calculo.svg, dr_spark.svg, owly.svg
+   - indy.svg, kavi.svg, aria.svg
+   - Wrapped in SvgMascot widget with floating animation
+
+9. ✅ BOTTOM NAVIGATION
+   - Home | Learn | Aria (center glowing) | Quizzes | Stats
+
+10. ✅ FIRESTORE DATA SEEDED
+    - 10 badges
+    - 5 subjects (Math, Science, English, Social, Hindi)
+    - 5 Math chapters (Real Numbers, Polynomials, etc.)
+    - Daily quiz
+    - Mock tests, PYQs
+
+11. ✅ IMMERSIVE FULLSCREEN (hides Android nav buttons)
+
+═══════════════════════════════════════════════════════════
+📁 PROJECT FILE STRUCTURE
+═══════════════════════════════════════════════════════════
+
+studyverse/
+├── android/ (config for edge-to-edge)
+├── assets/
+│   └── mascots/ (6 SVG files)
+├── lib/
+│   ├── main.dart
+│   ├── firebase_options.dart
+│   ├── config/
+│   │   ├── theme.dart (AppColors, AppTextStyles, AppShadows)
+│   │   └── api_config.dart (Gemini API key)
+│   ├── models/
+│   │   ├── user_model.dart
+│   │   ├── subject_model.dart
+│   │   ├── chapter_model.dart
+│   │   └── chat_message.dart
+│   ├── services/
+│   │   ├── auth_service.dart
+│   │   ├── firestore_service.dart
+│   │   ├── gemini_service.dart
+│   │   └── seed_service.dart
+│   ├── widgets/
+│   │   ├── duolingo_button.dart
+│   │   ├── home_header.dart
+│   │   ├── hero_card.dart
+│   │   ├── subject_card.dart
+│   │   ├── mascots/
+│   │   │   └── svg_mascot.dart
+│   │   └── chat/
+│   │       ├── message_bubble.dart
+│   │       ├── subject_chips.dart
+│   │       └── quick_prompts.dart
+│   ├── utils/
+│   │   └── system_ui_helper.dart
+│   └── screens/
+│       ├── splash_screen.dart
+│       ├── auth/
+│       │   ├── onboarding_screen.dart
+│       │   ├── login_screen.dart
+│       │   └── signup_screen.dart
+│       ├── main/
+│       │   ├── main_wrapper.dart (bottom nav)
+│       │   ├── home_screen.dart
+│       │   ├── learn_screen.dart
+│       │   ├── subject_detail_screen.dart
+│       │   ├── chapter_detail_screen.dart
+│       │   ├── ai_tutor_screen.dart
+│       │   ├── tests_screen.dart (placeholder)
+│       │   └── profile_screen.dart (placeholder)
+│       └── dev/
+│           ├── seed_screen.dart
+│           └── mascot_test_screen.dart
+
+═══════════════════════════════════════════════════════════
+📋 LOCKED FEATURES LIST (What we're building)
+═══════════════════════════════════════════════════════════
+
+CONTENT (5):
+- Chapter Notes (short + detailed) ✅ DONE
+- AI-Generated Summaries
+- Mind Maps
+- Formula Sheets ✅ DONE
+- Flashcards ✅ DONE (display only, not interactive yet)
+
+AI FEATURES (5):
+- AI Tutor Chat (Gemini) ✅ DONE
+- Image → Solve any question
+- Math Solver step-by-step
+- Explain in Hindi/Hinglish (built into Aria)
+- AI Practice Questions
+
+TESTS & QUIZZES (5):
+- Chapter Quizzes
+- Mock Tests
+- Previous Year Questions
+- Daily Quiz Challenge
+- Result Analysis
+
+STUDY PLANNER (5):
+- AI Study Plan
+- Daily Goals
+- Exam Countdown
+- Pomodoro Timer
+- Progress Dashboard
+
+GAMIFICATION (3):
+- Streaks (structure ready)
+- Badges (10 seeded)
+- Refer & Earn
+
+═══════════════════════════════════════════════════════════
+🎯 CURRENT ISSUE / WHERE WE STOPPED
+═══════════════════════════════════════════════════════════
+
+We built the LEARN screen and Subject Detail screen. 
+Chapter Detail screen shows tabs (Notes, Formulas, Flashcards) 
+but user reported "no chapters available" when opening 
+Math subject.
+
+We were troubleshooting:
+- Added debug logs to getChapters() method
+- Suspected Firestore path issue
+- User needs to check Firebase Console for path:
+  content/cbse/class10/math/chapters/
+
+If chapters missing: Re-seed via dev tool (long press splash)
+
+═══════════════════════════════════════════════════════════
+🚀 UPCOMING SCREENS TO BUILD (In Order)
+═══════════════════════════════════════════════════════════
+
+NEXT: Fix chapter loading (if not fixed yet)
+1. QUIZ SCREEN — Interactive MCQ with mascot reactions
+   - Duolingo-style 3D answer buttons
+   - Progress dots at top
+   - Mascot reactions (celebrating on correct, thinking on wrong)
+   - Instant feedback with explanation
+   - XP rewards
+   - Result screen with stats
+
+2. FLASHCARDS SCREEN — 3D flip cards
+   - Interactive flip animation
+   - Previous/Next navigation
+   - Progress counter
+   - Card of X of Y
+
+3. PROFILE SCREEN — User account
+   - User info + avatar
+   - Streak/XP stats
+   - Settings
+   - Logout button (IMPORTANT — user needs this!)
+   - Delete account
+
+4. STATS/PARENT DASHBOARD
+   - Study time charts
+   - Subject strength bars
+   - Exam countdown (CBSE Board)
+   - Weekly reports
+
+5. STREAK MODAL — Daily streak celebration
+6. ADVANCED AI FEATURES — Image upload, voice, math solver
+7. WEBSITE (Next.js) — Landing page + web dashboard
+
+═══════════════════════════════════════════════════════════
+💡 HOW USER WANTS THINGS
+═══════════════════════════════════════════════════════════
+
+- User is a "vibe coder" — needs COPY-PASTE prompts for VS Code AI
+- Give ONLY prompts (not code directly) — they paste it to VS Code AI
+- Break down in clear steps
+- Use emojis and formatting
+- Explain what will happen after running
+- Include testing steps
+- Ask for confirmation after each step
+- Prefer Y/N checklists for verification
+
+═══════════════════════════════════════════════════════════
+📝 IMPORTANT USER PREFERENCES
+═══════════════════════════════════════════════════════════
+
+- Design must match: Duolingo + Khan Academy + Notion vibe
+- All 6 mascots must appear throughout the app
+- Fullscreen immersive mode (hides Android nav buttons)
+- Light theme with cream background
+- 3D Duolingo-style buttons everywhere
+- Smooth 60fps animations
+- Haptic feedback on all buttons
+- Copy button on important text
+- Bottom SafeArea properly handled
+
+═══════════════════════════════════════════════════════════
+🔥 FIREBASE STRUCTURE
+═══════════════════════════════════════════════════════════
+
+Firestore Collections:
+- users/{userId} → user data, streak, xp, class, badges
+- content/{board}/{class}/{subjectId} → subject info
+- content/{board}/{class}/{subjectId}/chapters/{chapterId}
+- badges/{badgeId} → 10 badges seeded
+- mockTests/{testId}
+- dailyQuiz/{dateStr}
+- pyqs/{questionId}
+- userProgress/{userId}/daily/{dateStr}
+- chatHistory/{userId}/messages
+- studyPlans/{userId}
+- referrals/{userId}
+
+Firebase Rules: Already deployed with proper security
+
+═══════════════════════════════════════════════════════════
+🎯 YOUR JOB NOW
+═══════════════════════════════════════════════════════════
+
+1. Acknowledge you understand this context
+2. Ask user: "What were we working on last? Should I:
+   A) Continue fixing the 'no chapters' issue
+   B) Move to next feature (Quiz Screen)
+   C) Build something else"
+3. Give copy-paste prompts for VS Code AI (NOT code directly)
+4. Follow the established format:
+   - Use ═══ separators
+   - Number steps clearly
+   - End with checklist Y/N questions
+   - Ask what's next
+
+═══════════════════════════════════════════════════════════
+🌟 FUTURE VISION (Long-term goals)
+═══════════════════════════════════════════════════════════
+
+PHASE 1 (MVP - Current): 
+- All 23 features working for Class 10 CBSE Math
+- Beta test with 50 students
+
+PHASE 2 (Growth):
+- Add Class 11 and 12 content
+- All subjects fully populated
+- Subscription model (₹149-299/month via Razorpay)
+- School partnerships
+
+PHASE 3 (Scale):
+- ICSE + State Boards
+- Community features (doubt forum)
+- Parent dashboard app
+- Website launch (Next.js on Vercel)
+
+PHASE 4 (Dominate):
+- Competitive exam prep (JEE/NEET basics)
+- AI-generated personalized content
+- International boards
+- Career guidance
+- Mental health support
+
+BUSINESS GOAL:
+- Free tier: Basic access
+- Pro (₹149/month): Full content + AI
+- Ultimate (₹299/month): Everything + priority support
+- School Tier: Bulk pricing
+
+MASCOT STRATEGY:
+- 6 original characters (fully owned, no copyright issues)
+- Later: Hire designer for premium versions
+- Merchandise potential (stickers, plushies)
+- Character-driven learning approach
+
+═══════════════════════════════════════════════════════════
+
+Now please acknowledge you've read this and ask me what 
+we should work on next. Remember: I need COPY-PASTE prompts 
+for VS Code AI, not direct code.
